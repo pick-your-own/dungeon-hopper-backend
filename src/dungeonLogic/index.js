@@ -71,3 +71,16 @@ module.exports = {
   dungeonNormalOdds: (payload) => dungeonOdds(payload, Math.floor(Math.random() * 100), 50),
   dungeonHardOdds: (payload) => dungeonOdds(payload, Math.floor(Math.random() * 100), 75),
 };
+
+// module.exports = {
+//   playDungeon: (payload) => playLevel(payload, Math.floor(Math.random() * 100), 25, 'dungeon'),
+//   playCastle: (payload) => playLevel(payload, Math.floor(Math.random() * 100), 50, 'castle'),
+//   playSwamp: (payload) => playLevel(payload, Math.floor(Math.random() * 100), 75, 'swamp'),
+//   playForest: (payload) => playLevel(payload, Math.floor(Math.random() * 100), 20, 'forest'),
+//   playMountain: (payload) => playLevel(payload, Math.floor(Math.random() * 100), 55, 'mountain'),
+//   playDesert: (payload) => playLevel(payload, Math.floor(Math.random() * 100), 65, 'desert'),
+//   playIceCaves: (payload) => playLevel(payload, Math.floor(Math.random() * 100), 80, 'ice caves'),
+//   playVolcano: (payload) => playLevel(payload, Math.floor(Math.random() * 100), 90, 'volcano'),
+//   playNetherRealm: (payload) => playLevel(payload, Math.floor(Math.random() * 100), 95, 'nether realm'),
+//   playSkyCity: (payload) => playLevel(payload, Math.floor(Math.random() * 100), 85, 'sky city'),
+// };
