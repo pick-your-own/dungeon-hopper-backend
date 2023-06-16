@@ -70,7 +70,7 @@ io.on('connection', (socket) => {
 
   // CHAT
   socket.on('sendMessage', ({ sender, message }) => {
-    io.emit('chatJoin', { sender, message});
+    io.emit('chatMessage', { sender, message});
   });
 
   // WHEN USER IS TYPING
