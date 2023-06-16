@@ -69,22 +69,19 @@ io.on('connection', (socket) => {
   });
 
   // CHAT
+  // socket.on('sendMessage', (messageObject) => {
+  //   console.log('message recieved', messageObject);
+  //   io.emit('chatMessage', messageObject);
+  // });
+
+
+
   socket.on('sendMessage', ({ sender, message }) => {
-    io.emit('chatJoin', { sender, message});
+    io.emit('chatMessage', { sender, message});
   });
 
-  // WHEN USER IS TYPING
-  // socket.on('typing', (username) => {
-  //   socket.broadcast.emit('typing', username);
-  // });
 
-  // WHEN USER STOPS TYPING
-  // socket.on('stopTyping', (username) => {
-  //   socket.broadcast.emit('stopTyping', username);
-  // });
-
-
-  socket.on('dungeonFinish', (payload)=>{
+  socket.on('dungeonFinish', (payload) => {
     socket.emit('dungeonMenu', payload);
   });
   // DUNGEON LOGIC
@@ -128,42 +125,3 @@ module.exports = {
   start,
   app,
 };
-
-  // // LEAVE CHAT ROOM
-  // socket.on('leaveChat', () => {
-  //   socket.emit('roomMenu');
-  // });
-
-  // // JOINING ROOMS AND EMIT TO CHAT ROOM
-  // socket.on('chatJoin', (payload) => {
-  //   socket.join(payload.room);
-  //   if (payload.room === 1) {
-  //     console.log(`${payload.username} has joined chat room!`);
-  //     io.to(payload.room).emit('chatMessage');
-  //   } else {
-  //     payload.message = `${payload.username} has joined room`;
-  //     io.to(payload.room).emit('dungeonMenu', payload);
-  //   }
-  // });
-
-  // // CHAT
-  // socket.on('sendMessage', ({ sender, message }) => {
-  //   io.emit('chatMessage', { sender, message });
-  // });
-
-  // // DUNGEON LOGIC
-  // socket.on('dungeonLogic', async (payload) => {
-  //   if (payload.mode === 1) {
-  //     await dungeonEasyOdds(payload);
-  //   }
-  //   if (payload.mode === 3) {
-  //     console.log('Dungeon hard mode');
-  //     await dungeonHardOdds(payload);
-  //   }
-  //   if (payload.mode === 2) {
-  //     await dungeonNormalOdds(payload);
-  //   }
-  //   setTimeout(() => {
-  //     io.to(payload.room).emit('dungeonResults', payload);
-  //   }, 1000);
-  // });
