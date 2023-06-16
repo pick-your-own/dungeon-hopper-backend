@@ -70,19 +70,23 @@ io.on('connection', (socket) => {
 
   // CHAT
   socket.on('sendMessage', ({ sender, message }) => {
-    io.emit('chatMessage', { sender, message});
+    io.emit('chatJoin', { sender, message});
   });
 
   // WHEN USER IS TYPING
-  socket.on('typing', (username) => {
-    socket.broadcast.emit('typing', username);
-  });
+  // socket.on('typing', (username) => {
+  //   socket.broadcast.emit('typing', username);
+  // });
 
   // WHEN USER STOPS TYPING
-  socket.on('stopTyping', (username) => {
-    socket.broadcast.emit('stopTyping', username);
-  });
+  // socket.on('stopTyping', (username) => {
+  //   socket.broadcast.emit('stopTyping', username);
+  // });
 
+
+  socket.on('dungeonFinish', (payload)=>{
+    socket.emit('dungeonMenu', payload);
+  });
   // DUNGEON LOGIC
   socket.on('dungeonLogic', async (payload) => {
     if (payload.mode === 1) {
