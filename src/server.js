@@ -75,9 +75,13 @@ io.on('connection', (socket) => {
     io.emit('chatMessage', { sender, message});
   });
 
+  socket.on('leaveDungeon', (payload) => {
+    socket.emit('roomMenu', payload);
+  });
+
 
   socket.on('dungeonFinish', (payload) => {
-    socket.emit('roomMenu', payload);
+    socket.emit('dungeonMenu', payload);
   });
   // DUNGEON LOGIC
   socket.on('dungeonLogic', async (payload) => {
