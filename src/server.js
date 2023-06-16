@@ -69,12 +69,6 @@ io.on('connection', (socket) => {
   });
 
   // CHAT
-  // socket.on('sendMessage', (messageObject) => {
-  //   console.log('message recieved', messageObject);
-  //   io.emit('chatMessage', messageObject);
-  // });
-
-
 
   socket.on('sendMessage', ({ sender, message }) => {
     io.emit('chatMessage', { sender, message});
